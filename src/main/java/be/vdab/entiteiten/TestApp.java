@@ -1,11 +1,15 @@
 package be.vdab.entiteiten;
 
 import be.vdab.be.vdab.dao.CustomerDao;
+import be.vdab.be.vdab.dao.OrderDao;
 import be.vdab.be.vdab.dao.ProductDao;
 import be.vdab.be.vdab.dao.ShopDao;
 import be.vdab.dao.impl.CustomerDaoImpl;
+import be.vdab.dao.impl.OrderDaoImpl;
 import be.vdab.dao.impl.ProductDaoImpl;
 import be.vdab.dao.impl.ShopDaoImpl;
+
+import java.sql.Date;
 
 public class TestApp {
 
@@ -34,6 +38,11 @@ public class TestApp {
 
         ProductDao productDaoImpl = new ProductDaoImpl();
         productDaoImpl.findProducts("Fender").forEach(System.out::println);
+
+        OrderDao orderDao = new OrderDaoImpl();
+        orderDao.findOrdersForCustomer(testCust).forEach(System.out::println);
+        orderDao.saveOrder(new Order ("Paypal", 22, Date.valueOf("2017-07-15"), 100, 1));
+
     }
 }
 
