@@ -20,7 +20,7 @@ public class Order {
         this.eshopId = eshopId;
     }
 
-    public Order(String paymentMethod, int orderTotal, Date date, int custId, int eshopId) {
+    public Order(String paymentMethod, int orderTotal, Date date, int custId, int eshopId) {// orderId is auto-incremental in database
         this.paymentMethod = paymentMethod;
         this.orderTotal = orderTotal;
         this.date = date;
