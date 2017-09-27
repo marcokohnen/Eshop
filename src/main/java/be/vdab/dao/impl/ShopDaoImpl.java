@@ -14,7 +14,7 @@ import static be.vdab.be.database.MySqlConnection.getConnection;
 
 public class ShopDaoImpl implements ShopDao {
 
-    private Eshop shop;
+    private Eshop shop =null;
     private List<Eshop> listEschops;
     private static int KOLOM_ID;
     private static String KOLOM_INFO;
@@ -35,7 +35,9 @@ public class ShopDaoImpl implements ShopDao {
                 KOLOM_ADDRESS = rs.getString("adress");
                 KOLOM_PLAATS = rs.getString("plaats");
                 shop = new Eshop(KOLOM_ID, KOLOM_INFO, KOLOM_ADDRESS, KOLOM_PLAATS);
-                listEschops.add(shop);
+                if (shop != null) {
+                    listEschops.add(shop);
+                }
                 //System.out.println("shop toegevoegd");
             }
         } catch (SQLException ex) {

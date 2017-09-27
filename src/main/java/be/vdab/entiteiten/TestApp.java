@@ -1,8 +1,10 @@
 package be.vdab.entiteiten;
 
 import be.vdab.be.vdab.dao.CustomerDao;
+import be.vdab.be.vdab.dao.ProductDao;
 import be.vdab.be.vdab.dao.ShopDao;
 import be.vdab.dao.impl.CustomerDaoImpl;
+import be.vdab.dao.impl.ProductDaoImpl;
 import be.vdab.dao.impl.ShopDaoImpl;
 
 public class TestApp {
@@ -29,6 +31,9 @@ public class TestApp {
         else {
             System.out.println("User niet gevonden");
         }
+
+        ProductDao productDaoImpl = new ProductDaoImpl();
+        productDaoImpl.findProducts("Fender").forEach(System.out::println);
     }
 }
 

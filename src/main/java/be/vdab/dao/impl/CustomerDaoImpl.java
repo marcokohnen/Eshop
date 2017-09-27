@@ -24,9 +24,9 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public Customer findCustomers(String name, String firstname, String username) {
         String sql = "select * from customer\n" +
-                "where ucase(name)= ?\n" +
-                "and ucase(firstName)= ?\n" +
-                "and ucase(userName)= ?;";
+                "where name = ?\n" +
+                "and firstName = ?\n" +
+                "and userName = ?;";
         try (Connection connection = getConnection();
              PreparedStatement pst = connection.prepareStatement(sql)) {
             pst.setString(1, name);
@@ -53,8 +53,8 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public User findByLoginAndUsername(String username, String password) {
         String sql = "select * from customer\n" +
-                "where ucase(username)= ?\n" +
-                "and ucase(passWord)= ?";
+                "where username = ?\n" +
+                "and passWord = ?";
         try (Connection connection = getConnection();
              PreparedStatement pst = connection.prepareStatement(sql)) {
             pst.setString(1, username);
