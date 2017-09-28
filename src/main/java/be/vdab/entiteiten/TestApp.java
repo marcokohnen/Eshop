@@ -47,8 +47,6 @@ public class TestApp {
         for (Product eenProduct : testList) {
             basketDao.addProductToBasket(eenProduct, 10);
         }
-        //Map<Product, Integer> basketMap = basketDao.getBasket().getBasketMap();
-        //System.out.println(basketMap.entrySet());
         System.out.println(basketDao.getBasket().getBasketMap());
     }
 }

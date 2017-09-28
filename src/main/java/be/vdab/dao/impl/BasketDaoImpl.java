@@ -4,7 +4,6 @@ import be.vdab.be.vdab.dao.BasketDao;
 import be.vdab.entiteiten.Basket;
 import be.vdab.entiteiten.Product;
 
-import java.util.HashMap;
 
 public class BasketDaoImpl implements BasketDao {
 
