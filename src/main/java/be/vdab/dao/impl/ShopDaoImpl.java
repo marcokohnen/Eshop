@@ -45,8 +45,4 @@ public class ShopDaoImpl implements ShopDao {
         }
         return listEschops;
     }
-
-    public List<Eshop> getListEschops() {
-        return listEschops;
-    }
 }

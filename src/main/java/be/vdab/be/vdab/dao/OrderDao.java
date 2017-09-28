@@ -9,5 +9,4 @@ public interface OrderDao {
 
     List<Order> findOrdersForCustomer(Customer customer);
 
-    void saveOrder(Order order);
 }

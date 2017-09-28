@@ -3,6 +3,7 @@ package be.vdab.entiteiten;
 public class User {
 
     private String userName, passWord;
+    /*private Password password;*/
 
     public User(String userName, String passWord) {
         this.userName = userName;

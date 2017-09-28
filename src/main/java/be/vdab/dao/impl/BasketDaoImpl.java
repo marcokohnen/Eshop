@@ -2,38 +2,38 @@ package be.vdab.dao.impl;
 
 import be.vdab.be.vdab.dao.BasketDao;
 import be.vdab.entiteiten.Basket;
-import be.vdab.entiteiten.Product;
+import be.vdab.entiteiten.Order;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import static be.vdab.be.database.MySqlConnection.getConnection;
 
 
 public class BasketDaoImpl implements BasketDao {
 
-    Basket basket = new Basket();
+    private Basket basket = new Basket();
 
     @Override
-    public void saveOrUpdateBasket(Basket basket) {
-        this.basket = basket;
-    }
-
-    @Override
-    public void addProductToBasket(Product product, int aantal) {
-        basket.getBasketMap().put(product, aantal);
-    }
-
-
-    @Override
-    public void removeProductFromBasket(Product product) {
-        if (basket.getBasketMap().get(product) != null) { // alleen als product in basketMap aanwezig wordt deze verwijderd
-            basket.getBasketMap().remove(product);
+    public void saveOrder(Order order) {
+        String sql = "insert into orders (paymentMethod, orderTotal, date, custId, eshopId)\n" +
+                "values (?,?,?,?,?)";
+        try (Connection connection = getConnection();
+             PreparedStatement pst = connection.prepareStatement(sql)) {
+            pst.setString(1, order.getPaymentMethod());
+            pst.setInt(2, order.getOrderTotal());
+            pst.setDate(3, order.getDate());
+            pst.setInt(4, order.getCustId());
+            pst.setInt(5, order.getEshopId());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public Basket getBasket() {
         return basket;
-    }
-
-    @Override
-    public void clearBasket() {
-        basket.getBasketMap().clear();
     }
 }

@@ -49,21 +49,4 @@ public class OrderDaoImpl implements OrderDao {
         }
         return orderList;
     }
-
-    @Override
-    public void saveOrder(Order order) {
-        String sql = "insert into orders (paymentMethod, orderTotal, date, custId, eshopId)\n" +
-                "values (?,?,?,?,?)";
-        try (Connection connection = getConnection();
-             PreparedStatement pst = connection.prepareStatement(sql)) {
-            pst.setString(1, order.getPaymentMethod());
-            pst.setInt(2, order.getOrderTotal());
-            pst.setDate(3, order.getDate());
-            pst.setInt(4, order.getCustId());
-            pst.setInt(5, order.getEshopId());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }

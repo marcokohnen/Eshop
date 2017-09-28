@@ -2,19 +2,12 @@ package be.vdab.be.vdab.dao;
 
 
 import be.vdab.entiteiten.Basket;
-import be.vdab.entiteiten.Product;
+import be.vdab.entiteiten.Order;
 
 public interface BasketDao {
 
-    void saveOrUpdateBasket(Basket basket);
-
-    void addProductToBasket(Product product, int aantal);
-
-    void removeProductFromBasket(Product product);
+    void saveOrder(Order order);
 
     Basket getBasket();
-
-    void clearBasket();
-
 
 }
