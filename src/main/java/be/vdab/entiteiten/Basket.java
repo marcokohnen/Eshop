@@ -19,8 +19,12 @@ public class Basket {
         this.basketMap = basket.basketMap;
     }
 
-    public void addProductToBasket(Product product, int aantal) {
-        basketMap.put(product, aantal);
+    public void addProductToBasket(Product product) {
+        if (basketMap.containsKey(product)) { // als product al in basket --> verhoog aantal met 1
+            basketMap.put(product, basketMap.get(product) + 1);
+        } else {
+            basketMap.put(product, 1); //als product niet in basket --> zet aantal = 1
+        }
     }
 
 
@@ -34,6 +38,14 @@ public class Basket {
 
     public void clearBasket() {
         basketMap.clear();
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0.0F;
+        for (Product eenProduct : basketMap.keySet()) {
+            totalPrice += (eenProduct.getPrice() * basketMap.get(eenProduct));
+        }
+        return totalPrice;
     }
 
     @Override

@@ -31,6 +31,19 @@ public class Product {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return getProductId() == product.getProductId();
+    }
+
+    @Override
+    public int hashCode() {
+        return getProductId();
+    }
+
+    @Override
     public String toString() {
         return productId + " " + name + " " + price + " " + stock;
     }
